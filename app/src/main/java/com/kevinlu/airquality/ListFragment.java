@@ -120,11 +120,7 @@ public class ListFragment extends Fragment implements RecyclerItemTouchHelperLis
             }
             builder.setTitle("No internet connection")
                     .setMessage("You must have an internet connection to receive the latest air quality information.")
-                    .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                            dialog.cancel();
-                        }
-                    })
+                    .setPositiveButton(android.R.string.ok, (dialog, which) -> dialog.cancel())
                     .setIcon(android.R.drawable.ic_dialog_alert)
                     .show();
         }
@@ -133,13 +129,10 @@ public class ListFragment extends Fragment implements RecyclerItemTouchHelperLis
         spinnerList = new ArrayList<>();
         loadSpinnerListItems();
         spinnerDialog = new SpinnerDialog(getActivity(), spinnerList, "Select city");
-        spinnerDialog.bindOnSpinerListener(new OnSpinerItemClick() {
-            @Override
-            public void onClick(String s, int i) {
-                Toast.makeText(getContext(), s, Toast.LENGTH_SHORT).show();
-                loadSelectedDataToRecyclerView(s);
-                listAdapter.notifyDataSetChanged();
-            }
+        spinnerDialog.bindOnSpinerListener((s, i) -> {
+            Toast.makeText(getContext(), s, Toast.LENGTH_SHORT).show();
+            loadSelectedDataToRecyclerView(s);
+            listAdapter.notifyDataSetChanged();
         });
     }
 
@@ -205,6 +198,7 @@ public class ListFragment extends Fragment implements RecyclerItemTouchHelperLis
     public void onStart() {
         super.onStart();
         //loadDataFromFirebase();
+        stationList.clear();
         loadDataFromSQLiteDatabase();
     }
 
@@ -508,42 +502,35 @@ public class ListFragment extends Fragment implements RecyclerItemTouchHelperLis
         //Request a string response from the provided URL, create a new StringRequest object
         /*
          * @param response - This is the response (JSON file) from the API
-         */
-        //This is what will happen when there is an error during the response
-        /*
+         *
+         * This is what will happen when there is an error during the response
          * @param error - This is the error that Volley encountered
          */
         StringRequest stringRequest = new StringRequest(Request.Method.GET, generateRequestURL(selectedStation),
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        //Using Gson to turn JSON to Java object of Station
-                        //Create new GsonBuilder and Gson objects
-                        GsonBuilder gsonBuilder = new GsonBuilder();
-                        Gson gson = gsonBuilder.create();
-                        //Create a new Station object and use Gson to deserialize JSON data
-                        //into the Station object
-                        Station station = gson.fromJson(response, Station.class);
-                        //Add the new Station object to the ArrayList of Station objects
-                        //This is to create another entry in the RecyclerView
-                        //Tell the RecyclerView listAdapter that our data is updated
-                        //because Station was just to the ArrayList
-                        stationList.add(station);
-                        listAdapter.notifyDataSetChanged();
-                        //Add the new Station object to Firebase
-                        //uploadDataToFirebase(station);
-                        //Add the new Station object to SQLite database
-                        addData(response);
-                        //Write the API response data to the log console
-                        Log.d("API RESPONSE", response);
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                //Write the error from Volley to the log console
-                Log.d("VOLLEY ERROR", error.toString());
-            }
-        });
+                response -> {
+                    //Using Gson to turn JSON to Java object of Station
+                    //Create new GsonBuilder and Gson objects
+                    GsonBuilder gsonBuilder = new GsonBuilder();
+                    Gson gson = gsonBuilder.create();
+                    //Create a new Station object and use Gson to deserialize JSON data
+                    //into the Station object
+                    Station station = gson.fromJson(response, Station.class);
+                    //Add the new Station object to the ArrayList of Station objects
+                    //This is to create another entry in the RecyclerView
+                    //Tell the RecyclerView listAdapter that our data is updated
+                    //because Station was just to the ArrayList
+                    stationList.add(station);
+                    listAdapter.notifyDataSetChanged();
+                    //Add the new Station object to Firebase
+                    //uploadDataToFirebase(station);
+                    //Add the new Station object to SQLite database
+                    addData(response);
+                    //Write the API response data to the log console
+                    Log.d("API RESPONSE", response);
+                }, error -> {
+                    //Write the error from Volley to the log console
+                    Log.d("VOLLEY ERROR", error.toString());
+                });
         //Add the request to the RequestQueue
         requestQueue.add(stringRequest);
     }
@@ -605,17 +592,14 @@ public class ListFragment extends Fragment implements RecyclerItemTouchHelperLis
                 //Remove the item from Firebase
                 //stations.child(cityName).removeValue();
 
-                Log.d("yeet", "deleted!!!");
+                Log.d("Deleted", "deleted!!!");
 
                 Snackbar snackbar = Snackbar.make(getView(), cityName + " removed from list!", Snackbar.LENGTH_LONG);
-                snackbar.setAction("UNDO", new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        // undo is selected, restore the deleted item
-                        listAdapter.restoreItem(deletedStation, position);
-                        //stations.child(cityName).setValue(deletedStation);
-                        addData(deletedStationJSON);
-                    }
+                snackbar.setAction("UNDO", view -> {
+                    // undo is selected, restore the deleted item
+                    listAdapter.restoreItem(deletedStation, position);
+                    //stations.child(cityName).setValue(deletedStation);
+                    addData(deletedStationJSON);
                 });
                 snackbar.show();
             }

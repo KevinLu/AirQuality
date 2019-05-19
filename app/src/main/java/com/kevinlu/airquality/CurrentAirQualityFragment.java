@@ -41,6 +41,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
+import java.util.Objects;
 
 
 /**
@@ -107,11 +108,7 @@ public class CurrentAirQualityFragment extends Fragment {
             }
             builder.setTitle("No internet connection")
                     .setMessage("You must have an internet connection to receive the latest air quality information.")
-                    .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                            dialog.cancel();
-                        }
-                    })
+                    .setPositiveButton(android.R.string.ok, (dialog, which) -> dialog.cancel())
                     .setIcon(android.R.drawable.ic_dialog_alert)
                     .show();
         }
@@ -148,13 +145,10 @@ public class CurrentAirQualityFragment extends Fragment {
         currentProgressBar = itemView.findViewById(R.id.current_progress_bar);
         pullToRefresh = itemView.findViewById(R.id.current_swipeRefresh);
 
-        pullToRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                Toast.makeText(getContext(), "Successfully refreshed!", Toast.LENGTH_SHORT).show();
-                getCurrentAirQualityData();
-                pullToRefresh.setRefreshing(false);
-            }
+        pullToRefresh.setOnRefreshListener(() -> {
+            Toast.makeText(getContext(), "Successfully refreshed!", Toast.LENGTH_SHORT).show();
+            getCurrentAirQualityData();
+            pullToRefresh.setRefreshing(false);
         });
 
         getCurrentAirQualityData();
@@ -234,31 +228,33 @@ public class CurrentAirQualityFragment extends Fragment {
         //Changing the background image depending on the time of day
         //Also changes the status bar color if the device has
         //Android Lollipop or above
-        if (hour >= 0 && hour < 5) {
-            currentLayout.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.bg_night));
-            Window window = getActivity().getWindow();
-            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-            window.setStatusBarColor(Color.parseColor("#041b20"));
-        } else if (hour >= 5 && hour < 7) {
-            currentLayout.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.bg_sunrise));
-            Window window = getActivity().getWindow();
-            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-            window.setStatusBarColor(Color.parseColor("#060f18"));
-        } else if (hour >= 7 && hour < 17) {
-            currentLayout.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.bg_sunny));
-            Window window = getActivity().getWindow();
-            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-            window.setStatusBarColor(Color.parseColor("#08253b"));
-        } else if (hour >= 17 && hour < 20) {
-            currentLayout.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.bg_sunset));
-            Window window = getActivity().getWindow();
-            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-            window.setStatusBarColor(Color.parseColor("#20244c"));
-        } else if (hour >= 20 && hour < 24) {
-            currentLayout.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.bg_night));
-            Window window = getActivity().getWindow();
-            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-            window.setStatusBarColor(Color.parseColor("#041b20"));
+        if (getContext() != null) {
+            if (hour >= 0 && hour < 5) {
+                currentLayout.setBackground(ContextCompat.getDrawable(Objects.requireNonNull(getContext()), R.drawable.bg_night));
+                Window window = Objects.requireNonNull(getActivity()).getWindow();
+                window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+                window.setStatusBarColor(Color.parseColor("#041b20"));
+            } else if (hour >= 5 && hour < 7) {
+                currentLayout.setBackground(ContextCompat.getDrawable(Objects.requireNonNull(getContext()), R.drawable.bg_sunrise));
+                Window window = Objects.requireNonNull(getActivity()).getWindow();
+                window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+                window.setStatusBarColor(Color.parseColor("#060f18"));
+            } else if (hour >= 7 && hour < 17) {
+                currentLayout.setBackground(ContextCompat.getDrawable(Objects.requireNonNull(getContext()), R.drawable.bg_sunny));
+                Window window = Objects.requireNonNull(getActivity()).getWindow();
+                window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+                window.setStatusBarColor(Color.parseColor("#08253b"));
+            } else if (hour >= 17 && hour < 20) {
+                currentLayout.setBackground(ContextCompat.getDrawable(Objects.requireNonNull(getContext()), R.drawable.bg_sunset));
+                Window window = Objects.requireNonNull(getActivity()).getWindow();
+                window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+                window.setStatusBarColor(Color.parseColor("#20244c"));
+            } else if (hour >= 20 && hour < 24) {
+                currentLayout.setBackground(ContextCompat.getDrawable(Objects.requireNonNull(getContext()), R.drawable.bg_night));
+                Window window = Objects.requireNonNull(getActivity()).getWindow();
+                window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+                window.setStatusBarColor(Color.parseColor("#041b20"));
+            }
         }
 
         //Display the information after it's been loaded
@@ -286,40 +282,46 @@ public class CurrentAirQualityFragment extends Fragment {
         //Changing the background image depending on the time of day
         //Also changes the status bar color if the device has
         //Android Lollipop or above
-        if (hour >= 0 && hour < 5) {
-            currentLayout.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.bg_night));
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                Window window = getActivity().getWindow();
-                window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-                window.setStatusBarColor(Color.parseColor("#041b20"));
-            }
-        } else if (hour >= 5 && hour < 7) {
-            currentLayout.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.bg_sunrise));
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                Window window = getActivity().getWindow();
-                window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-                window.setStatusBarColor(Color.parseColor("#060f18"));
-            }
-        } else if (hour >= 7 && hour < 17) {
-            currentLayout.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.bg_sunny));
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                Window window = getActivity().getWindow();
-                window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-                window.setStatusBarColor(Color.parseColor("#08253b"));
-            }
-        } else if (hour >= 17 && hour < 20) {
-            currentLayout.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.bg_sunset));
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                Window window = getActivity().getWindow();
-                window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-                window.setStatusBarColor(Color.parseColor("#20244c"));
-            }
-        } else if (hour >= 20 && hour < 24) {
-            currentLayout.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.bg_night));
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                Window window = getActivity().getWindow();
-                window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-                window.setStatusBarColor(Color.parseColor("#041b20"));
+        if (getContext() != null) {
+            if (hour >= 0 && hour < 5) {
+                currentLayout.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.bg_night));
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    Window window = getActivity().getWindow();
+                    window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+                    window.setStatusBarColor(Color.parseColor("#041b20"));
+                }
+            } else if (hour >= 5 && hour < 7) {
+                currentLayout.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.bg_sunrise));
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    Window window = getActivity().getWindow();
+                    window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+                    window.setStatusBarColor(Color.parseColor("#060f18"));
+
+                }
+            } else if (hour >= 7 && hour < 17) {
+                currentLayout.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.bg_sunny));
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    Window window = getActivity().getWindow();
+                    window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+                    window.setStatusBarColor(Color.parseColor("#08253b"));
+
+                }
+            } else if (hour >= 17 && hour < 20) {
+                currentLayout.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.bg_sunset));
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    Window window = getActivity().getWindow();
+                    window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+                    window.setStatusBarColor(Color.parseColor("#20244c"));
+
+                }
+            } else if (hour >= 20 && hour < 24) {
+                currentLayout.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.bg_night));
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    Window window = getActivity().getWindow();
+                    window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+                    window.setStatusBarColor(Color.parseColor("#041b20"));
+
+                }
             }
         }
 
