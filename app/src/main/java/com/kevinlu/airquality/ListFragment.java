@@ -11,10 +11,12 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.DividerItemDecoration;
@@ -30,6 +32,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -57,6 +60,8 @@ import in.galaxyofandroid.spinerdialog.SpinnerDialog;
  */
 public class ListFragment extends Fragment implements RecyclerItemTouchHelperListener, ListAdapter.OnItemClickListener {
 
+    private final String TAG = "ListFragment";
+
     static ListFragment instance;
     private Toolbar toolbar;
     private RecyclerView recyclerView;
@@ -67,6 +72,8 @@ public class ListFragment extends Fragment implements RecyclerItemTouchHelperLis
     private SearchView.OnQueryTextListener queryTextListener;
     private SpinnerDialog spinnerDialog;
     private DatabaseHelper databaseHelper;
+    private ProgressBar currentProgressBar;
+    private SwipeRefreshLayout pullToRefresh;
 
     public static final String EXTRA_COORDINATES = "coordinates";
     public static final String EXTRA_STATION_JSON = "stationJSON";
@@ -161,6 +168,17 @@ public class ListFragment extends Fragment implements RecyclerItemTouchHelperLis
         //Set the toolbar object as this activity's SupportActionBar
         ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
 
+        currentProgressBar = itemView.findViewById(R.id.list_progress_bar);
+        pullToRefresh = itemView.findViewById(R.id.list_swipeRefresh);
+
+        pullToRefresh.setOnRefreshListener(() -> {
+            Toast.makeText(getContext(), "Refreshed", Toast.LENGTH_SHORT).show();
+            reloadAirQualityData();
+            pullToRefresh.setRefreshing(false);
+        });
+
+        currentProgressBar.setVisibility(View.GONE);
+
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
 
         //Initialize the recyclerView so it can display the data in the ArrayList
@@ -188,6 +206,24 @@ public class ListFragment extends Fragment implements RecyclerItemTouchHelperLis
     public void addData(String data) {
         databaseHelper = new DatabaseHelper(getActivity());
         databaseHelper.saveStationRecord(data);
+    }
+
+    private void reloadAirQualityData() {
+        for (int i = 0; i < stationList.size(); i++) {
+            Station station = stationList.get(i);
+            String city = station.getData().getCity();
+            String state = station.getData().getState();
+            String country = station.getData().getCountry();
+
+            String stationName = city + ", " + state + ", " + country;
+
+            listAdapter.removeItem(i);
+
+            Handler handler = new Handler();
+            handler.postDelayed(() -> loadSelectedDataToRecyclerView(stationName), 1000);
+            //Remove the item from RecyclerView
+        }
+        listAdapter.notifyDataSetChanged();
     }
 
     /**
@@ -356,7 +392,7 @@ public class ListFragment extends Fragment implements RecyclerItemTouchHelperLis
             listAdapter.filterList(filteredList);
         }
         long endTime = System.currentTimeMillis();
-        Log.d("Linear Search time", (endTime - startTime) + "");
+        Log.d(TAG, "Linear Search time: " + (endTime - startTime));
     }
 
     /**
@@ -387,7 +423,7 @@ public class ListFragment extends Fragment implements RecyclerItemTouchHelperLis
             }
         }
         long endTime = System.currentTimeMillis();
-        Log.d("Binary Search time", (endTime - startTime) + "");
+        Log.d(TAG, "Binary Search time: " + (endTime - startTime));
         listAdapter.filterList(filteredList);
     }
 
@@ -526,10 +562,10 @@ public class ListFragment extends Fragment implements RecyclerItemTouchHelperLis
                     //Add the new Station object to SQLite database
                     addData(response);
                     //Write the API response data to the log console
-                    Log.d("API RESPONSE", response);
+                    Log.d(TAG, "API RESPONSE: " + response);
                 }, error -> {
                     //Write the error from Volley to the log console
-                    Log.d("VOLLEY ERROR", error.toString());
+                    Log.d(TAG, "VOLLEY ERROR: " + error.toString());
                 });
         //Add the request to the RequestQueue
         requestQueue.add(stringRequest);
@@ -570,7 +606,6 @@ public class ListFragment extends Fragment implements RecyclerItemTouchHelperLis
     public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction, int position) {
         if (viewHolder instanceof ListAdapter.ViewHolder) {
             if (direction == ItemTouchHelper.LEFT) {
-                //Initialize the Firebase database
                 //We are no longer using Firebase now!
                 //FirebaseDatabase database = FirebaseDatabase.getInstance();
                 //Set the database reference to the stations list in Firebase
@@ -592,7 +627,7 @@ public class ListFragment extends Fragment implements RecyclerItemTouchHelperLis
                 //Remove the item from Firebase
                 //stations.child(cityName).removeValue();
 
-                Log.d("Deleted", "deleted!!!");
+                Log.d(TAG, cityName + " deleted!");
 
                 Snackbar snackbar = Snackbar.make(getView(), cityName + " removed from list!", Snackbar.LENGTH_LONG);
                 snackbar.setAction("UNDO", view -> {

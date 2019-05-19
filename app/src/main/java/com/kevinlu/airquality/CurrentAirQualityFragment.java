@@ -155,7 +155,7 @@ public class CurrentAirQualityFragment extends Fragment {
         pullToRefresh = itemView.findViewById(R.id.current_swipeRefresh);
 
         pullToRefresh.setOnRefreshListener(() -> {
-            Toast.makeText(getContext(), "Successfully refreshed!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), "Refreshed", Toast.LENGTH_SHORT).show();
             getCurrentAirQualityData();
             pullToRefresh.setRefreshing(false);
         });
