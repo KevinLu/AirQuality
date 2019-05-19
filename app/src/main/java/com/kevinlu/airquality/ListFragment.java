@@ -106,7 +106,7 @@ public class ListFragment extends Fragment implements RecyclerItemTouchHelperLis
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
-
+        setRetainInstance(true);
         databaseHelper = new DatabaseHelper(getActivity());
 
         //Check if user is connected to the internet
@@ -200,7 +200,7 @@ public class ListFragment extends Fragment implements RecyclerItemTouchHelperLis
         //loadDataFromFirebase();
         stationList.clear();
         loadDataFromSQLiteDatabase();
-    }
+}
 
     /**
      * This method checks if the user is connected to the internet.

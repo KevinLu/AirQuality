@@ -1,4 +1,4 @@
-#Sun May 19 11:09:37 EDT 2019
+#Sun May 19 12:57:17 EDT 2019
 path.1=classes.dex
 path.0=classes.dex
 renamed.5=classes6.dex
@@ -7,12 +7,12 @@ renamed.3=classes4.dex
 renamed.2=classes3.dex
 renamed.1=classes2.dex
 renamed.0=classes.dex
-base.5=C\:\\Users\\kevin\\Documents\\GitHub\\AirQuality\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\31
-base.4=C\:\\Users\\kevin\\Documents\\GitHub\\AirQuality\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\34
-base.3=C\:\\Users\\kevin\\Documents\\GitHub\\AirQuality\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\32
-base.2=C\:\\Users\\kevin\\Documents\\GitHub\\AirQuality\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\35
-base.1=C\:\\Users\\kevin\\Documents\\GitHub\\AirQuality\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\30
-base.0=C\:\\Users\\kevin\\Documents\\GitHub\\AirQuality\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\33
+base.5=C\:\\Users\\kevin\\Documents\\GitHub\\AirQuality\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\53
+base.4=C\:\\Users\\kevin\\Documents\\GitHub\\AirQuality\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\51
+base.3=C\:\\Users\\kevin\\Documents\\GitHub\\AirQuality\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\54
+base.2=C\:\\Users\\kevin\\Documents\\GitHub\\AirQuality\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\49
+base.1=C\:\\Users\\kevin\\Documents\\GitHub\\AirQuality\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\52
+base.0=C\:\\Users\\kevin\\Documents\\GitHub\\AirQuality\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\50
 path.5=classes.dex
 path.4=classes.dex
 path.3=classes.dex

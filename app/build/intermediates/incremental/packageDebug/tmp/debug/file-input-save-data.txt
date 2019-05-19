@@ -1,31 +1,31 @@
 #Internal package file, do not edit.
-#Sat Feb 16 12:27:09 EST 2019
-2.base=C\:\\Users\\kevin\\Documents\\GitHub\\AirQuality\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\31
+#Sun May 19 12:57:17 EDT 2019
+2.base=C\:\\Users\\kevin\\Documents\\GitHub\\AirQuality\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\53
 5.set=DEX
 0.path=classes.dex
 2.baseType=DIRECTORY
-3.base=C\:\\Users\\kevin\\Documents\\GitHub\\AirQuality\\app\\build\\intermediates\\assets\\debug
+3.base=C\:\\Users\\kevin\\Documents\\GitHub\\AirQuality\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\51
 2.set=DEX
-1.path=classes.dex
-4.base=C\:\\Users\\kevin\\Documents\\GitHub\\AirQuality\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\34
+1.path=crashlytics-build.properties
+4.base=C\:\\Users\\kevin\\Documents\\GitHub\\AirQuality\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\54
 count=7
 5.baseType=DIRECTORY
 2.path=classes.dex
-5.base=C\:\\Users\\kevin\\Documents\\GitHub\\AirQuality\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\32
+5.base=C\:\\Users\\kevin\\Documents\\GitHub\\AirQuality\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\52
 4.set=DEX
-3.path=crashlytics-build.properties
-6.base=C\:\\Users\\kevin\\Documents\\GitHub\\AirQuality\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\30
+3.path=classes.dex
+6.base=C\:\\Users\\kevin\\Documents\\GitHub\\AirQuality\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\50
 3.baseType=DIRECTORY
-1.set=DEX
+1.set=ASSET
 4.path=classes.dex
 6.set=DEX
 1.baseType=DIRECTORY
 6.baseType=DIRECTORY
 5.path=classes.dex
-0.base=C\:\\Users\\kevin\\Documents\\GitHub\\AirQuality\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\35
+0.base=C\:\\Users\\kevin\\Documents\\GitHub\\AirQuality\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\49
 0.baseType=DIRECTORY
-3.set=ASSET
+3.set=DEX
 6.path=classes.dex
-1.base=C\:\\Users\\kevin\\Documents\\GitHub\\AirQuality\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\33
+1.base=C\:\\Users\\kevin\\Documents\\GitHub\\AirQuality\\app\\build\\intermediates\\assets\\debug
 4.baseType=DIRECTORY
 0.set=DEX

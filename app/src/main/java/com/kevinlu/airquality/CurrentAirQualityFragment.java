@@ -11,6 +11,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
@@ -53,9 +54,9 @@ import java.util.Objects;
  */
 public class CurrentAirQualityFragment extends Fragment {
 
-    private final String url = "http://api.airvisual.com/v2/nearest_city?key=5X5FwBMHiD2DDKWBf";
+    //private final String url = "http://api.airvisual.com/v2/nearest_city?key=5X5FwBMHiD2DDKWBf";
     //private final String url = "http://api.airvisual.com/v2/nearest_city?key=5zbAzdPBu2RftKbus";
-    //private final String url = "http://api.airvisual.com/v2/nearest_city?key=ag85mSsqaj2Y24HvQ";
+    private final String url = "http://api.airvisual.com/v2/nearest_city?key=ag85mSsqaj2Y24HvQ";
 
     ImageView airQualityPicture;
     TextView cityName, countryName, cityTimeStamp, cityAQI, cityAQIRating;
@@ -63,6 +64,8 @@ public class CurrentAirQualityFragment extends Fragment {
     ProgressBar currentProgressBar;
     SwipeRefreshLayout pullToRefresh;
     RelativeLayout currentLayout;
+
+    String stationJson = "";
 
     static CurrentAirQualityFragment instance;
 
@@ -83,6 +86,11 @@ public class CurrentAirQualityFragment extends Fragment {
         // Empty constructor
     }
 
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putString("json", stationJson);
+    }
 
     /**
      * Called when the activity is starting.
@@ -97,6 +105,7 @@ public class CurrentAirQualityFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setRetainInstance(true);
         //Check if user is connected to the internet
         //If the user is connected, don't show it
         if (!isNetworkAvailable()) {
@@ -151,7 +160,26 @@ public class CurrentAirQualityFragment extends Fragment {
             pullToRefresh.setRefreshing(false);
         });
 
-        getCurrentAirQualityData();
+        //If the Fragment is being created for the first time
+        //savedInstanceState will be null
+        if (savedInstanceState == null && stationJson.equals("")) {
+            getCurrentAirQualityData();
+            Log.d("saved", "first time");
+        } else {
+            //Using Gson to turn JSON to Java object of Station
+            //Create new GsonBuilder and Gson objects
+            GsonBuilder gsonBuilder = new GsonBuilder();
+            Gson gson = gsonBuilder.create();
+            //Create a new Station object and use Gson to deserialize JSON data
+            //into the Station object
+            Station station = gson.fromJson(stationJson, Station.class);
+            //Call the loadCurrentData method to display the data
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                loadCurrentDataTargetApi26(station);
+            } else {
+                loadCurrentDataTarget(station);
+            }
+        }
 
         return itemView;
     }
@@ -191,6 +219,7 @@ public class CurrentAirQualityFragment extends Fragment {
                     //Create a new Station object and use Gson to deserialize JSON data
                     //into the Station object
                     Station station = gson.fromJson(response, Station.class);
+                    stationJson = response;
                     //Call the loadCurrentData method to display the data
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                         loadCurrentDataTargetApi26(station);
