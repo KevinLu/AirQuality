@@ -17,5 +17,5 @@ Check it out on Google Play [here](https://play.google.com/store/apps/details?id
 ![City Activity](https://raw.githubusercontent.com/KevinLu/AirQuality/master/screenshots/aqi_unsplash.PNG)
 
 # TODO
-- [ ] Improve City Activity UI
+- [x] Improve City Activity UI
 - [ ] Create a backend API for the app
