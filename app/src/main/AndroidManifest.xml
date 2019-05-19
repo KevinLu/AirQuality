@@ -25,6 +25,7 @@
         <meta-data
             android:name="io.fabric.ApiKey"
             android:value="c52ca4e894412d2d5340eace94c4b4a1441f8fd5" />
+        <meta-data android:name="google_analytics_adid_collection_enabled" android:value="false" />
     </application>
 
 </manifest>

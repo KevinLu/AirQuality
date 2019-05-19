@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.text.Html;
+import android.text.method.LinkMovementMethod;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
@@ -36,6 +38,7 @@ public class CityActivity extends AppCompatActivity {
 
     private TextView textViewAirQualityComment;
     private TextView textViewAirQualitySuggestion;
+    private TextView textViewPhotoDetails;
 
     /**
      * Called when the activity is starting.
@@ -81,6 +84,7 @@ public class CityActivity extends AppCompatActivity {
         TextView textViewAirQualityWarning = findViewById(R.id.airquality_warning);
         textViewAirQualityComment = findViewById(R.id.airquality_comment);
         textViewAirQualitySuggestion = findViewById(R.id.airquality_suggestion);
+        textViewPhotoDetails = findViewById(R.id.cityPhotoDetails);
 
         Toolbar toolbar = findViewById(R.id.cityToolbar);
         setSupportActionBar(toolbar);
@@ -88,16 +92,16 @@ public class CityActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         toolbar.setTitle(cityName);
 
-        textViewCoordinates.setText("Coordinates: " + coordinates);
-        textViewTimestamp.setText("ISO-8601 Timestamp: " + timestamp);
+        textViewCoordinates.setText(coordinates);
+        textViewTimestamp.setText(timestamp);
         textViewAQIUS.setText("U.S. AQI: " + aqiUS);
         textViewMainPollutantUS.setText("U.S. Main Pollutant: " + decodePollutant(mainPollutantUS));
         textViewAQICN.setText("China AQI: " + aqiCN);
         textViewMainPollutantCN.setText("China Main Pollutant: " + decodePollutant(mainPollutantCN));
-        textViewAirQualityWarning.setText("The air quality is " + rankAQIUS(Integer.valueOf(aqiUS)) + "!");
+        textViewAirQualityWarning.setText(rankAQIUS(Integer.valueOf(aqiUS)));
         setAirQualityComment(Integer.valueOf(aqiUS));
 
-        loadHeaderImageFromUnsplash(countryName, imageView);
+        loadHeaderImageFromUnsplash(cityName, countryName, imageView);
     }
 
     private void setAirQualityComment(int aqius) {
@@ -133,17 +137,17 @@ public class CityActivity extends AppCompatActivity {
      */
     private String rankAQIUS(int aqius) {
         if (aqius >= 0 && aqius <= 50) {
-            return "good";
+            return "Good";
         } else if (aqius >= 51 && aqius <= 100) {
-            return "moderate";
+            return "Moderate";
         } else if (aqius >= 101 && aqius <= 150) {
-            return "unhealthy for sensitive groups";
+            return "Unhealthy for Sensitive Groups";
         } else if (aqius >= 151 && aqius <= 200) {
-            return "unhealthy";
+            return "Unhealthy";
         } else if (aqius >= 201 && aqius <= 300) {
-            return "very unhealthy";
+            return "Very Unhealthy";
         } else if (aqius >= 301) {
-            return "hazardous";
+            return "Hazardous";
         } else {
             return "ERROR";
         }
@@ -168,33 +172,71 @@ public class CityActivity extends AppCompatActivity {
      * @param countryName  - a String, the name of the city.
      * @param imageView - the ImageView that should hold this image.
      */
-    private void loadHeaderImageFromUnsplash(String countryName, ImageView imageView) {
+    private void loadHeaderImageFromUnsplash(String cityName, String countryName, ImageView imageView) {
         Unsplash unsplash = new Unsplash("2ef4adbbc6aa68fb62acbf7170933cbc25526420aa6da426c16cb0c08ce5cffd");
-        unsplash.searchPhotos(countryName, new Unsplash.OnSearchCompleteListener() {
+        unsplash.searchPhotos(cityName, new Unsplash.OnSearchCompleteListener() {
             @Override
             public void onComplete(SearchResults results) {
-                Log.d("Photos", "Total Results Found " + results.getTotal());
-                //TODO: add some random function (random(0, photos.size)) to get more pictures
-                List<Photo> photos = results.getResults();
-                int random = (int)(Math.random() * photos.size());
-                unsplash.getPhotoDownloadLink(photos.get(random).getId(), new Unsplash.OnLinkLoadedListener() {
-                    @Override
-                    public void onComplete(Download downloadLink) {
-                        String imageLink = downloadLink.getUrl();
-                        Picasso.get().load(imageLink).fit().centerCrop().into(imageView);
-                    }
+                Log.d("City Photos", "Total Results Found " + results.getTotal());
+                List<Photo> cityPhotos = results.getResults();
 
-                    @Override
-                    public void onError(String error) {
-                        Log.d("Unsplash", error);
-                    }
-                });
+                //If can't find any images of the city, switch to find images of its country
+                if (cityPhotos.size() == 0) {
+                    unsplash.searchPhotos(countryName, new Unsplash.OnSearchCompleteListener() {
+                        @Override
+                        public void onComplete(SearchResults results) {
+                            Log.d("City Photos", "Total Results Found " + results.getTotal());
+                            List<Photo> countryPhotos = results.getResults();
+
+                            int random = (int) (Math.random() * countryPhotos.size());
+                            unsplash.getPhotoDownloadLink(countryPhotos.get(random).getId(), new Unsplash.OnLinkLoadedListener() {
+                                @Override
+                                public void onComplete(Download downloadLink) {
+                                    String imageLink = downloadLink.getUrl();
+                                    String photographer = countryPhotos.get(random).getUser().getName();
+                                    String photographerLink = "https://unsplash.com/@" + countryPhotos.get(random).getUser().getUsername();
+                                    Log.d("link", photographerLink);
+                                    Picasso.get().load(imageLink).fit().centerCrop().into(imageView);
+                                    textViewPhotoDetails.setText(Html.fromHtml("<a href=" + photographerLink + "> " + photographer + " "));
+                                    textViewPhotoDetails.setMovementMethod(LinkMovementMethod.getInstance());
+                                }
+
+                                @Override
+                                public void onError(String error) {
+                                    Log.d("Unsplash", error);
+                                }
+                            });
+                        }
+
+                        @Override
+                        public void onError(String error) {
+                            Log.d("Unsplash", error);
+                        }
+                    });
+                } else {
+                    int random = (int) (Math.random() * cityPhotos.size());
+                    unsplash.getPhotoDownloadLink(cityPhotos.get(random).getId(), new Unsplash.OnLinkLoadedListener() {
+                        @Override
+                        public void onComplete(Download downloadLink) {
+                            String imageLink = downloadLink.getUrl();
+                            String photographer = cityPhotos.get(random).getUser().getName();
+                            String photographerLink = "https://unsplash.com/@" + cityPhotos.get(random).getUser().getUsername();
+                            Log.d("link", photographerLink);
+                            Picasso.get().load(imageLink).fit().centerCrop().into(imageView);
+                            textViewPhotoDetails.setText(Html.fromHtml("<a href=" + photographerLink + "> " + photographer + " "));
+                            textViewPhotoDetails.setMovementMethod(LinkMovementMethod.getInstance());
+                        }
+
+                        @Override
+                        public void onError(String error) {
+                            Log.d("Unsplash", error);
+                        }
+                    });
+                }
             }
 
             @Override
-            public void onError(String error) {
-                Log.d("Unsplash", error);
-            }
+            public void onError(String error) { Log.d("Unsplash", error); }
         });
     }
 
