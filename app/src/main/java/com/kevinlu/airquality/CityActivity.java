@@ -185,27 +185,16 @@ public class CityActivity extends AppCompatActivity {
                     unsplash.searchPhotos(countryName, new Unsplash.OnSearchCompleteListener() {
                         @Override
                         public void onComplete(SearchResults results) {
-                            Log.d("City Photos", "Total Results Found " + results.getTotal());
                             List<Photo> countryPhotos = results.getResults();
-
-                            int random = (int) (Math.random() * countryPhotos.size());
-                            unsplash.getPhotoDownloadLink(countryPhotos.get(random).getId(), new Unsplash.OnLinkLoadedListener() {
-                                @Override
-                                public void onComplete(Download downloadLink) {
-                                    String imageLink = downloadLink.getUrl();
-                                    String photographer = countryPhotos.get(random).getUser().getName();
-                                    String photographerLink = "https://unsplash.com/@" + countryPhotos.get(random).getUser().getUsername();
-                                    Log.d("link", photographerLink);
-                                    Picasso.get().load(imageLink).fit().centerCrop().into(imageView);
-                                    textViewPhotoDetails.setText(Html.fromHtml("<a href=" + photographerLink + "> " + photographer + " "));
-                                    textViewPhotoDetails.setMovementMethod(LinkMovementMethod.getInstance());
-                                }
-
-                                @Override
-                                public void onError(String error) {
-                                    Log.d("Unsplash", error);
-                                }
-                            });
+                            int random = (int) (Math.random() * cityPhotos.size());
+                            String imageLink = countryPhotos.get(random).getUrls().getRegular() + "&utm_source=AirQuality&utm_medium=referral&utm_campaign=api-credit";
+                            String photographer = countryPhotos.get(random).getUser().getName();
+                            String photographerLink = "https://unsplash.com/@" + countryPhotos.get(random).getUser().getUsername() + "&utm_source=AirQuality&utm_medium=referral&utm_campaign=api-credit";
+                            Log.d("LINK", photographerLink);
+                            Log.d("LINK", imageLink);
+                            Picasso.get().load(imageLink).fit().centerCrop().into(imageView);
+                            textViewPhotoDetails.setText(Html.fromHtml("<a href=" + photographerLink + "> " + photographer));
+                            textViewPhotoDetails.setMovementMethod(LinkMovementMethod.getInstance());
                         }
 
                         @Override
@@ -215,23 +204,14 @@ public class CityActivity extends AppCompatActivity {
                     });
                 } else {
                     int random = (int) (Math.random() * cityPhotos.size());
-                    unsplash.getPhotoDownloadLink(cityPhotos.get(random).getId(), new Unsplash.OnLinkLoadedListener() {
-                        @Override
-                        public void onComplete(Download downloadLink) {
-                            String imageLink = downloadLink.getUrl();
-                            String photographer = cityPhotos.get(random).getUser().getName();
-                            String photographerLink = "https://unsplash.com/@" + cityPhotos.get(random).getUser().getUsername();
-                            Log.d("link", photographerLink);
-                            Picasso.get().load(imageLink).fit().centerCrop().into(imageView);
-                            textViewPhotoDetails.setText(Html.fromHtml("<a href=" + photographerLink + "> " + photographer + " "));
-                            textViewPhotoDetails.setMovementMethod(LinkMovementMethod.getInstance());
-                        }
-
-                        @Override
-                        public void onError(String error) {
-                            Log.d("Unsplash", error);
-                        }
-                    });
+                    String imageLink = cityPhotos.get(random).getUrls().getRegular() + "&utm_source=AirQuality&utm_medium=referral&utm_campaign=api-credit";
+                    String photographer = cityPhotos.get(random).getUser().getName();
+                    String photographerLink = "https://unsplash.com/@" + cityPhotos.get(random).getUser().getUsername() + "&utm_source=AirQuality&utm_medium=referral&utm_campaign=api-credit";
+                    Log.d("LINK", photographerLink);
+                    Log.d("LINK", imageLink);
+                    Picasso.get().load(imageLink).fit().centerCrop().into(imageView);
+                    textViewPhotoDetails.setText(Html.fromHtml("<a href=" + photographerLink + "> " + photographer));
+                    textViewPhotoDetails.setMovementMethod(LinkMovementMethod.getInstance());
                 }
             }
 

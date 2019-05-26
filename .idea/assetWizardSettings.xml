@@ -34,7 +34,7 @@
                                           <PersistentState>
                                             <option name="values">
                                               <map>
-                                                <entry key="scalingPercent" value="77" />
+                                                <entry key="scalingPercent" value="66" />
                                               </map>
                                             </option>
                                           </PersistentState>
@@ -49,6 +49,7 @@
                                       <entry key="backgroundImage" value="C:\Users\kevin\Desktop\ICS4U0\AQ_Pics\AirQuality_icon.png" />
                                       <entry key="foregroundImage" value="C:\Users\kevin\Desktop\ICS4U0\playstore_icon_template.psd\AirQualityICON_white.png" />
                                       <entry key="legacyIconShape" value="NONE" />
+                                      <entry key="showGrid" value="true" />
                                       <entry key="webIconShape" value="NONE" />
                                     </map>
                                   </option>
