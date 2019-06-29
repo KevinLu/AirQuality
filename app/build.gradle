@@ -22,8 +22,8 @@ android {
         applicationId "com.kevinlu.airquality"
         minSdkVersion 21
         targetSdkVersion 27
-        versionCode 14
-        versionName "1.4"
+        versionCode 152
+        versionName "1.52"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {

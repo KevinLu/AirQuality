@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\kevin\\Documents\\GitHub\\AirQuality\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-en-rCA\\values-en-rCA.xml",
+            "outputFile": "C:\\Users\\K\\Documents\\GitHub\\AirQuality\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-en-rCA\\values-en-rCA.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\kevin\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\8ca12a7423952fc07312875dca52ba31\\res\\values-en-rCA\\values-en-rCA.xml",
+                    "source": "C:\\Users\\K\\.gradle\\caches\\transforms-2\\files-2.1\\ed9e8021cd98d550552d61ef93601d12\\res\\values-en-rCA\\values-en-rCA.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",

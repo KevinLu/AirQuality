@@ -95,9 +95,13 @@ public class CityActivity extends AppCompatActivity {
         textViewCoordinates.setText(coordinates);
         textViewTimestamp.setText(timestamp);
         textViewAQIUS.setText("U.S. AQI: " + aqiUS);
-        textViewMainPollutantUS.setText("U.S. Main Pollutant: " + decodePollutant(mainPollutantUS));
+        //textViewMainPollutantUS.setText("U.S. Main Pollutant: " + decodePollutant(mainPollutantUS));
+        //BUG: AirVisual API no longer returns Main Pollutant data
+        textViewMainPollutantUS.setText("");
         textViewAQICN.setText("China AQI: " + aqiCN);
-        textViewMainPollutantCN.setText("China Main Pollutant: " + decodePollutant(mainPollutantCN));
+        //textViewMainPollutantCN.setText("China Main Pollutant: " + decodePollutant(mainPollutantCN));
+        //BUG: AirVisual API no longer returns Main Pollutant data
+        textViewMainPollutantCN.setText("");
         textViewAirQualityWarning.setText(rankAQIUS(Integer.valueOf(aqiUS)));
         setAirQualityComment(Integer.valueOf(aqiUS));
 

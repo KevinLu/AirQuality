@@ -85,7 +85,9 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
         String stationLocation = station.getData().getCity() + ", " + station.getData().getState() + ", " + station.getData().getCountry();
         //Setting the texts and images based on the AQI
         holder.textViewTitle.setText(stationLocation);
-        holder.textViewShortDesc.setText(decodePollutant(station.getData().getCurrent().getPollution().getMainus()));
+        //BUG: AirVisual API no longer returns the Main Pollutant data from their Community API.
+        //holder.textViewShortDesc.setText(decodePollutant(station.getData().getCurrent().getPollution().getMainus()));
+        holder.textViewShortDesc.setText("");
         int aqius = station.getData().getCurrent().getPollution().getAqius();
         setIconAQIUS(holder, aqius);
         holder.textViewRating.setText(aqius + "");
