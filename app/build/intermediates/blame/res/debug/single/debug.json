@@ -20,28 +20,28 @@
         "source": "C:\\Users\\K\\.gradle\\caches\\transforms-2\\files-2.1\\7f8c5d6166cec911ffa8d2bdd43335ee\\res\\layout\\design_navigation_menu.xml"
     },
     {
-        "merged": "C:\\Users\\K\\Documents\\GitHub\\AirQuality\\app\\build\\intermediates\\res\\merged\\debug\\anim_abc_shrink_fade_out_from_bottom.xml.flat",
-        "source": "C:\\Users\\K\\.gradle\\caches\\transforms-2\\files-2.1\\ed9e8021cd98d550552d61ef93601d12\\res\\anim\\abc_shrink_fade_out_from_bottom.xml"
-    },
-    {
         "merged": "C:\\Users\\K\\Documents\\GitHub\\AirQuality\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_notification_bg_low_pressed.9.png.flat",
         "source": "C:\\Users\\K\\.gradle\\caches\\transforms-2\\files-2.1\\f5ff075c1a92ca9a3b053cecf2d1de43\\res\\drawable-mdpi-v4\\notification_bg_low_pressed.9.png"
     },
     {
-        "merged": "C:\\Users\\K\\Documents\\GitHub\\AirQuality\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_face_very_unhealthy.png.flat",
-        "source": "C:\\Users\\K\\Documents\\GitHub\\AirQuality\\app\\build\\generated\\res\\pngs\\debug\\drawable-hdpi\\ic_face_very_unhealthy.png"
+        "merged": "C:\\Users\\K\\Documents\\GitHub\\AirQuality\\app\\build\\intermediates\\res\\merged\\debug\\anim_abc_shrink_fade_out_from_bottom.xml.flat",
+        "source": "C:\\Users\\K\\.gradle\\caches\\transforms-2\\files-2.1\\ed9e8021cd98d550552d61ef93601d12\\res\\anim\\abc_shrink_fade_out_from_bottom.xml"
     },
     {
         "merged": "C:\\Users\\K\\Documents\\GitHub\\AirQuality\\app\\build\\intermediates\\res\\merged\\debug\\drawable_common_google_signin_btn_icon_dark.xml.flat",
         "source": "C:\\Users\\K\\.gradle\\caches\\transforms-2\\files-2.1\\bace806040ac5457bedcf37bd313e43f\\res\\drawable\\common_google_signin_btn_icon_dark.xml"
     },
     {
-        "merged": "C:\\Users\\K\\Documents\\GitHub\\AirQuality\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ic_launcher_background.png.flat",
-        "source": "C:\\Users\\K\\Documents\\GitHub\\AirQuality\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher_background.png"
+        "merged": "C:\\Users\\K\\Documents\\GitHub\\AirQuality\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_face_very_unhealthy.png.flat",
+        "source": "C:\\Users\\K\\Documents\\GitHub\\AirQuality\\app\\build\\generated\\res\\pngs\\debug\\drawable-hdpi\\ic_face_very_unhealthy.png"
     },
     {
         "merged": "C:\\Users\\K\\Documents\\GitHub\\AirQuality\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_common_google_signin_btn_text_dark_normal_background.9.png.flat",
         "source": "C:\\Users\\K\\.gradle\\caches\\transforms-2\\files-2.1\\bace806040ac5457bedcf37bd313e43f\\res\\drawable-mdpi-v4\\common_google_signin_btn_text_dark_normal_background.9.png"
+    },
+    {
+        "merged": "C:\\Users\\K\\Documents\\GitHub\\AirQuality\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ic_launcher_background.png.flat",
+        "source": "C:\\Users\\K\\Documents\\GitHub\\AirQuality\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher_background.png"
     },
     {
         "merged": "C:\\Users\\K\\Documents\\GitHub\\AirQuality\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_abc_text_select_handle_middle_mtrl_dark.png.flat",
@@ -96,12 +96,12 @@
         "source": "C:\\Users\\K\\.gradle\\caches\\transforms-2\\files-2.1\\ed9e8021cd98d550552d61ef93601d12\\res\\drawable-hdpi-v4\\abc_btn_switch_to_on_mtrl_00012.9.png"
     },
     {
-        "merged": "C:\\Users\\K\\Documents\\GitHub\\AirQuality\\app\\build\\intermediates\\res\\merged\\debug\\drawable_abc_ratingbar_indicator_material.xml.flat",
-        "source": "C:\\Users\\K\\.gradle\\caches\\transforms-2\\files-2.1\\ed9e8021cd98d550552d61ef93601d12\\res\\drawable\\abc_ratingbar_indicator_material.xml"
-    },
-    {
         "merged": "C:\\Users\\K\\Documents\\GitHub\\AirQuality\\app\\build\\intermediates\\res\\merged\\debug\\drawable_common_google_signin_btn_text_disabled.xml.flat",
         "source": "C:\\Users\\K\\.gradle\\caches\\transforms-2\\files-2.1\\bace806040ac5457bedcf37bd313e43f\\res\\drawable\\common_google_signin_btn_text_disabled.xml"
+    },
+    {
+        "merged": "C:\\Users\\K\\Documents\\GitHub\\AirQuality\\app\\build\\intermediates\\res\\merged\\debug\\drawable_abc_ratingbar_indicator_material.xml.flat",
+        "source": "C:\\Users\\K\\.gradle\\caches\\transforms-2\\files-2.1\\ed9e8021cd98d550552d61ef93601d12\\res\\drawable\\abc_ratingbar_indicator_material.xml"
     },
     {
         "merged": "C:\\Users\\K\\Documents\\GitHub\\AirQuality\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_abc_tab_indicator_mtrl_alpha.9.png.flat",
@@ -148,28 +148,28 @@
         "source": "C:\\Users\\K\\.gradle\\caches\\transforms-2\\files-2.1\\bace806040ac5457bedcf37bd313e43f\\res\\drawable-xxhdpi-v4\\googleg_disabled_color_18.png"
     },
     {
-        "merged": "C:\\Users\\K\\Documents\\GitHub\\AirQuality\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_abc_switch_track_mtrl_alpha.9.png.flat",
-        "source": "C:\\Users\\K\\.gradle\\caches\\transforms-2\\files-2.1\\ed9e8021cd98d550552d61ef93601d12\\res\\drawable-hdpi-v4\\abc_switch_track_mtrl_alpha.9.png"
+        "merged": "C:\\Users\\K\\Documents\\GitHub\\AirQuality\\app\\build\\intermediates\\res\\merged\\debug\\drawable_common_google_signin_btn_icon_light.xml.flat",
+        "source": "C:\\Users\\K\\.gradle\\caches\\transforms-2\\files-2.1\\bace806040ac5457bedcf37bd313e43f\\res\\drawable\\common_google_signin_btn_icon_light.xml"
     },
     {
         "merged": "C:\\Users\\K\\Documents\\GitHub\\AirQuality\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_search_black_24dp.xml.flat",
         "source": "C:\\Users\\K\\Documents\\GitHub\\AirQuality\\app\\src\\main\\res\\drawable\\ic_search_black_24dp.xml"
     },
     {
-        "merged": "C:\\Users\\K\\Documents\\GitHub\\AirQuality\\app\\build\\intermediates\\res\\merged\\debug\\drawable_common_google_signin_btn_icon_light.xml.flat",
-        "source": "C:\\Users\\K\\.gradle\\caches\\transforms-2\\files-2.1\\bace806040ac5457bedcf37bd313e43f\\res\\drawable\\common_google_signin_btn_icon_light.xml"
+        "merged": "C:\\Users\\K\\Documents\\GitHub\\AirQuality\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_abc_switch_track_mtrl_alpha.9.png.flat",
+        "source": "C:\\Users\\K\\.gradle\\caches\\transforms-2\\files-2.1\\ed9e8021cd98d550552d61ef93601d12\\res\\drawable-hdpi-v4\\abc_switch_track_mtrl_alpha.9.png"
     },
     {
         "merged": "C:\\Users\\K\\Documents\\GitHub\\AirQuality\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi-v4_abc_ic_menu_paste_mtrl_am_alpha.png.flat",
         "source": "C:\\Users\\K\\.gradle\\caches\\transforms-2\\files-2.1\\ed9e8021cd98d550552d61ef93601d12\\res\\drawable-xxxhdpi-v4\\abc_ic_menu_paste_mtrl_am_alpha.png"
     },
     {
-        "merged": "C:\\Users\\K\\Documents\\GitHub\\AirQuality\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_launcher_background.png.flat",
-        "source": "C:\\Users\\K\\Documents\\GitHub\\AirQuality\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher_background.png"
-    },
-    {
         "merged": "C:\\Users\\K\\Documents\\GitHub\\AirQuality\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_abc_ic_menu_cut_mtrl_alpha.png.flat",
         "source": "C:\\Users\\K\\.gradle\\caches\\transforms-2\\files-2.1\\ed9e8021cd98d550552d61ef93601d12\\res\\drawable-xhdpi-v4\\abc_ic_menu_cut_mtrl_alpha.png"
+    },
+    {
+        "merged": "C:\\Users\\K\\Documents\\GitHub\\AirQuality\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_launcher_background.png.flat",
+        "source": "C:\\Users\\K\\Documents\\GitHub\\AirQuality\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher_background.png"
     },
     {
         "merged": "C:\\Users\\K\\Documents\\GitHub\\AirQuality\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_common_google_signin_btn_icon_dark_normal_background.9.png.flat",
@@ -292,12 +292,12 @@
         "source": "C:\\Users\\K\\Documents\\GitHub\\AirQuality\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_face_unhealthy_for_sensitive_groups.png"
     },
     {
-        "merged": "C:\\Users\\K\\Documents\\GitHub\\AirQuality\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_launcher_round.png.flat",
-        "source": "C:\\Users\\K\\Documents\\GitHub\\AirQuality\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher_round.png"
-    },
-    {
         "merged": "C:\\Users\\K\\Documents\\GitHub\\AirQuality\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_face_unhealthy.png.flat",
         "source": "C:\\Users\\K\\Documents\\GitHub\\AirQuality\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_face_unhealthy.png"
+    },
+    {
+        "merged": "C:\\Users\\K\\Documents\\GitHub\\AirQuality\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_launcher_round.png.flat",
+        "source": "C:\\Users\\K\\Documents\\GitHub\\AirQuality\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher_round.png"
     },
     {
         "merged": "C:\\Users\\K\\Documents\\GitHub\\AirQuality\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_abc_scrubber_control_to_pressed_mtrl_005.png.flat",
@@ -344,12 +344,12 @@
         "source": "C:\\Users\\K\\.gradle\\caches\\transforms-2\\files-2.1\\ed9e8021cd98d550552d61ef93601d12\\res\\drawable-hdpi-v4\\abc_menu_hardkey_panel_mtrl_mult.9.png"
     },
     {
-        "merged": "C:\\Users\\K\\Documents\\GitHub\\AirQuality\\app\\build\\intermediates\\res\\merged\\debug\\drawable_abc_btn_borderless_material.xml.flat",
-        "source": "C:\\Users\\K\\.gradle\\caches\\transforms-2\\files-2.1\\ed9e8021cd98d550552d61ef93601d12\\res\\drawable\\abc_btn_borderless_material.xml"
-    },
-    {
         "merged": "C:\\Users\\K\\Documents\\GitHub\\AirQuality\\app\\build\\intermediates\\res\\merged\\debug\\drawable_common_google_signin_btn_text_dark_normal.xml.flat",
         "source": "C:\\Users\\K\\.gradle\\caches\\transforms-2\\files-2.1\\bace806040ac5457bedcf37bd313e43f\\res\\drawable\\common_google_signin_btn_text_dark_normal.xml"
+    },
+    {
+        "merged": "C:\\Users\\K\\Documents\\GitHub\\AirQuality\\app\\build\\intermediates\\res\\merged\\debug\\drawable_abc_btn_borderless_material.xml.flat",
+        "source": "C:\\Users\\K\\.gradle\\caches\\transforms-2\\files-2.1\\ed9e8021cd98d550552d61ef93601d12\\res\\drawable\\abc_btn_borderless_material.xml"
     },
     {
         "merged": "C:\\Users\\K\\Documents\\GitHub\\AirQuality\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_abc_popup_background_mtrl_mult.9.png.flat",
@@ -360,12 +360,12 @@
         "source": "C:\\Users\\K\\Documents\\GitHub\\AirQuality\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v24\\ic_face_hazardous.xml"
     },
     {
-        "merged": "C:\\Users\\K\\Documents\\GitHub\\AirQuality\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_abc_popup_background_mtrl_mult.9.png.flat",
-        "source": "C:\\Users\\K\\.gradle\\caches\\transforms-2\\files-2.1\\ed9e8021cd98d550552d61ef93601d12\\res\\drawable-mdpi-v4\\abc_popup_background_mtrl_mult.9.png"
-    },
-    {
         "merged": "C:\\Users\\K\\Documents\\GitHub\\AirQuality\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_ic_face_very_unhealthy.png.flat",
         "source": "C:\\Users\\K\\Documents\\GitHub\\AirQuality\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\ic_face_very_unhealthy.png"
+    },
+    {
+        "merged": "C:\\Users\\K\\Documents\\GitHub\\AirQuality\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_abc_popup_background_mtrl_mult.9.png.flat",
+        "source": "C:\\Users\\K\\.gradle\\caches\\transforms-2\\files-2.1\\ed9e8021cd98d550552d61ef93601d12\\res\\drawable-mdpi-v4\\abc_popup_background_mtrl_mult.9.png"
     },
     {
         "merged": "C:\\Users\\K\\Documents\\GitHub\\AirQuality\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_face_unhealthy.png.flat",

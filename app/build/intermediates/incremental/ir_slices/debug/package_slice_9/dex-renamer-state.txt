@@ -1,4 +1,4 @@
-#Sat Jun 29 18:58:54 EDT 2019
+#Sat Jun 29 22:35:37 EDT 2019
 base.0=C\:\\Users\\K\\Documents\\GitHub\\AirQuality\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\9
 path.0=classes.dex
 renamed.0=classes.dex

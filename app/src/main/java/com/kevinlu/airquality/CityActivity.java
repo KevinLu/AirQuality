@@ -70,9 +70,9 @@ public class CityActivity extends AppCompatActivity {
         String coordinates = intent.getStringExtra(EXTRA_COORDINATES);
         String timestamp = station.getData().getCurrent().getPollution().getTs();
         String aqiUS = station.getData().getCurrent().getPollution().getAqius() + "";
-        String mainPollutantUS = station.getData().getCurrent().getPollution().getMainus();
+        //String mainPollutantUS = station.getData().getCurrent().getPollution().getMainus();
         String aqiCN = station.getData().getCurrent().getPollution().getAqicn() + "";
-        String mainPollutantCN = station.getData().getCurrent().getPollution().getMaincn();
+        //String mainPollutantCN = station.getData().getCurrent().getPollution().getMaincn();
 
         ImageView imageView = findViewById(R.id.cityImage);
         TextView textViewCoordinates = findViewById(R.id.cityCoordinates);
@@ -97,11 +97,11 @@ public class CityActivity extends AppCompatActivity {
         textViewAQIUS.setText("U.S. AQI: " + aqiUS);
         //textViewMainPollutantUS.setText("U.S. Main Pollutant: " + decodePollutant(mainPollutantUS));
         //BUG: AirVisual API no longer returns Main Pollutant data
-        textViewMainPollutantUS.setText("");
+        textViewMainPollutantUS.setText(" ");
         textViewAQICN.setText("China AQI: " + aqiCN);
         //textViewMainPollutantCN.setText("China Main Pollutant: " + decodePollutant(mainPollutantCN));
         //BUG: AirVisual API no longer returns Main Pollutant data
-        textViewMainPollutantCN.setText("");
+        textViewMainPollutantCN.setText(" ");
         textViewAirQualityWarning.setText(rankAQIUS(Integer.valueOf(aqiUS)));
         setAirQualityComment(Integer.valueOf(aqiUS));
 

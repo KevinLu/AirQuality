@@ -4,8 +4,6 @@ package com.kevinlu.airquality;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-import java.util.Comparator;
-
 public class Pollution {
 
     @SerializedName("ts")
@@ -14,15 +12,9 @@ public class Pollution {
     @SerializedName("aqius")
     @Expose
     private Integer aqius;
-    @SerializedName("mainus")
-    @Expose
-    private String mainus;
     @SerializedName("aqicn")
     @Expose
     private Integer aqicn;
-    @SerializedName("maincn")
-    @Expose
-    private String maincn;
 
     public String getTs() {
         return ts;
@@ -40,14 +32,6 @@ public class Pollution {
         this.aqius = aqius;
     }
 
-    public String getMainus() {
-        return mainus;
-    }
-
-    public void setMainus(String mainus) {
-        this.mainus = mainus;
-    }
-
     public Integer getAqicn() {
         return aqicn;
     }
@@ -56,11 +40,4 @@ public class Pollution {
         this.aqicn = aqicn;
     }
 
-    public String getMaincn() {
-        return maincn;
-    }
-
-    public void setMaincn(String maincn) {
-        this.maincn = maincn;
-    }
 }
