@@ -4,18 +4,17 @@ package com.kevinlu.airquality;
 import android.annotation.TargetApi;
 import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.graphics.Color;
 import android.icu.util.Calendar;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.support.v4.content.ContextCompat;
-import android.support.v4.widget.SwipeRefreshLayout;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.core.content.ContextCompat;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -36,10 +35,8 @@ import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import java.lang.annotation.Target;
 import java.sql.Time;
 import java.time.LocalDate;
-import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 import java.util.Objects;
@@ -56,7 +53,7 @@ public class CurrentAirQualityFragment extends Fragment {
 
     //private final String url = "http://api.airvisual.com/v2/nearest_city?key=5X5FwBMHiD2DDKWBf";
     //private final String url = "http://api.airvisual.com/v2/nearest_city?key=5zbAzdPBu2RftKbus";
-    private final String url = "http://api.airvisual.com/v2/nearest_city?key=ag85mSsqaj2Y24HvQ";
+    private final String url = "http://api.airvisual.com/v2/nearest_city?key=e664662e-28cc-4b22-b2ab-9a20e1f67354";
 
     ImageView airQualityPicture;
     TextView cityName, countryName, cityTimeStamp, cityAQI, cityAQIRating;

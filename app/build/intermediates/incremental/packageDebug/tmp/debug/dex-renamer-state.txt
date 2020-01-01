@@ -1,4 +1,4 @@
-#Sat Jun 29 22:48:12 EDT 2019
-base.0=C\:\\Users\\K\\Documents\\GitHub\\AirQuality\\app\\build\\intermediates\\transforms\\r8\\debug\\0
+#Wed Jan 01 18:23:20 EST 2020
+base.0=C\:\\Users\\K\\Documents\\GitHub\\AirQuality\\app\\build\\intermediates\\transforms\\r8\\debug\\0\\classes.dex
 path.0=classes.dex
 renamed.0=classes.dex

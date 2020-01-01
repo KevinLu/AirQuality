@@ -4,7 +4,6 @@ package com.kevinlu.airquality;
 import android.app.AlertDialog;
 import android.app.SearchManager;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.ConnectivityManager;
@@ -12,19 +11,17 @@ import android.net.NetworkInfo;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.annotation.NonNull;
-import android.support.design.widget.CoordinatorLayout;
-import android.support.design.widget.Snackbar;
-import android.support.v4.app.Fragment;
-import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.DividerItemDecoration;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.SearchView;
-import android.support.v7.widget.Toolbar;
-import android.support.v7.widget.helper.ItemTouchHelper;
+import com.google.android.material.snackbar.Snackbar;
+import androidx.fragment.app.Fragment;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.appcompat.widget.SearchView;
+import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -37,8 +34,6 @@ import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
@@ -49,7 +44,6 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.Collections;
 
-import in.galaxyofandroid.spinerdialog.OnSpinerItemClick;
 import in.galaxyofandroid.spinerdialog.SpinnerDialog;
 
 /**
@@ -62,7 +56,7 @@ public class ListFragment extends Fragment implements RecyclerItemTouchHelperLis
 
     private final String TAG = "ListFragment";
 
-    static ListFragment instance;
+    private static ListFragment instance;
     private Toolbar toolbar;
     private RecyclerView recyclerView;
     private ListAdapter listAdapter;
@@ -78,7 +72,7 @@ public class ListFragment extends Fragment implements RecyclerItemTouchHelperLis
     public static final String EXTRA_COORDINATES = "coordinates";
     public static final String EXTRA_STATION_JSON = "stationJSON";
 
-    private final String url = "http://api.airvisual.com/v2/city?city={{YOUR_CITY}}&state={{YOUR_STATE}}&country={{YOUR_COUNTRY}}&key=5X5FwBMHiD2DDKWBf";
+    private final String url = "http://api.airvisual.com/v2/city?city={{YOUR_CITY}}&state={{YOUR_STATE}}&country={{YOUR_COUNTRY}}&key=e664662e-28cc-4b22-b2ab-9a20e1f67354";
     //private final String url = "http://api.airvisual.com/v2/city?city={{YOUR_CITY}}&state={{YOUR_STATE}}&country={{YOUR_COUNTRY}}&key=5zbAzdPBu2RftKbus";
     //private final String url = "http://api.airvisual.com/v2/city?city={{YOUR_CITY}}&state={{YOUR_STATE}}&country={{YOUR_COUNTRY}}&key=ag85mSsqaj2Y24HvQ";
 
@@ -236,7 +230,7 @@ public class ListFragment extends Fragment implements RecyclerItemTouchHelperLis
         //loadDataFromFirebase();
         stationList.clear();
         loadDataFromSQLiteDatabase();
-}
+    }
 
     /**
      * This method checks if the user is connected to the internet.
@@ -250,48 +244,6 @@ public class ListFragment extends Fragment implements RecyclerItemTouchHelperLis
         NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
         return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
-
-    /**
-     * This function uploads a Station object's data to the Firebase database
-     *
-     * @param station - a Station object that contains information from API
-     */
-//    private void uploadDataToFirebase(Station station) {
-//        //Initialize the Firebase database
-//        FirebaseDatabase database = FirebaseDatabase.getInstance();
-//        //Set the database reference to the stations list in Firebase
-//        DatabaseReference stations = database.getReference("stations");
-//        //Set an id for each Station object added to Firebase
-//        String id = station.getData().getCity();
-//        //Add the object to Firebase
-//        stations.child(id).setValue(station);
-//    }
-
-    /**
-     * This function loads a Station object's data from the Firebase database
-     */
-//    private void loadDataFromFirebase() {
-//        //Initialize the Firebase database
-//        FirebaseDatabase database = FirebaseDatabase.getInstance();
-//        //Set the database reference to the stations list in Firebase
-//        DatabaseReference stations = database.getReference("stations");
-//        stations.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                stationList.clear();
-//                for (DataSnapshot stationSnapshot : dataSnapshot.getChildren()) {
-//                    Station station = stationSnapshot.getValue(Station.class);
-//                    stationList.add(station);
-//                }
-//                listAdapter.notifyDataSetChanged();
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError databaseError) {
-//                //Return the error here... Check Logcat console
-//            }
-//        });
-//    }
 
     /**
      * This function loads a Station object's data from the SQLITE database
@@ -564,9 +516,9 @@ public class ListFragment extends Fragment implements RecyclerItemTouchHelperLis
                     //Write the API response data to the log console
                     Log.d(TAG, "API RESPONSE: " + response);
                 }, error -> {
-                    //Write the error from Volley to the log console
-                    Log.d(TAG, "VOLLEY ERROR: " + error.toString());
-                });
+            //Write the error from Volley to the log console
+            Log.d(TAG, "VOLLEY ERROR: " + error.toString());
+        });
         //Add the request to the RequestQueue
         requestQueue.add(stringRequest);
     }

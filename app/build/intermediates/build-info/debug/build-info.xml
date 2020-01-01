@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <instant-run
-    abi="armeabi-v7a,armeabi"
-    api-level="27"
+    abi="x86"
+    api-level="28"
     build-mode="COLD"
-    density="hdpi"
+    density="440dpi"
     format="10"
     plugin-version="3.4.1"
-    timestamp="1561862618245"
+    timestamp="1566423665092"
     token="6749580541287391900"
     verifier="COLD_SWAP_REQUESTED" >
 
@@ -23,39 +23,83 @@
         name="verifier"
         duration="0" />
 
+    <artifact
+        location="C:\Users\K\Documents\GitHub\AirQuality\app\build\intermediates\resources\instant-run\debug\resources-debug.apk"
+        type="SPLIT" />
+
     <build
         build-mode="FULL"
-        timestamp="1561862552938"
-        verifier="FULL_BUILD_REQUESTED" >
+        ir-eligibility="CLASS_ADDED"
+        timestamp="1566421475889"
+        verifier="COLD_SWAP_REQUESTED" >
         <artifact
             location="C:\Users\K\Documents\GitHub\AirQuality\app\build\intermediates\resources\instant-run\debug\resources-debug.apk"
-            type="SPLIT" />
-        <artifact
-            location="C:\Users\K\Documents\GitHub\AirQuality\app\build\intermediates\instant-run-apk\debug\app-debug.apk"
-            type="SPLIT_MAIN" />
-        <artifact
-            location="C:\Users\K\Documents\GitHub\AirQuality\app\build\intermediates\split-apk\debug\slices\slice_3.apk"
-            type="SPLIT" />
-        <artifact
-            location="C:\Users\K\Documents\GitHub\AirQuality\app\build\intermediates\split-apk\debug\slices\slice_8.apk"
-            type="SPLIT" />
-        <artifact
-            location="C:\Users\K\Documents\GitHub\AirQuality\app\build\intermediates\split-apk\debug\slices\slice_9.apk"
-            type="SPLIT" />
-        <artifact
-            location="C:\Users\K\Documents\GitHub\AirQuality\app\build\intermediates\split-apk\debug\slices\slice_7.apk"
-            type="SPLIT" />
-        <artifact
-            location="C:\Users\K\Documents\GitHub\AirQuality\app\build\intermediates\split-apk\debug\slices\slice_2.apk"
-            type="SPLIT" />
-        <artifact
-            location="C:\Users\K\Documents\GitHub\AirQuality\app\build\intermediates\split-apk\debug\slices\slice_5.apk"
             type="SPLIT" />
         <artifact
             location="C:\Users\K\Documents\GitHub\AirQuality\app\build\intermediates\split-apk\debug\dep\dependencies.apk"
             type="SPLIT" />
         <artifact
+            location="C:\Users\K\Documents\GitHub\AirQuality\app\build\intermediates\split-apk\debug\slices\slice_3.apk"
+            type="SPLIT" />
+        <artifact
+            location="C:\Users\K\Documents\GitHub\AirQuality\app\build\intermediates\split-apk\debug\slices\slice_2.apk"
+            type="SPLIT" />
+        <artifact
             location="C:\Users\K\Documents\GitHub\AirQuality\app\build\intermediates\split-apk\debug\slices\slice_4.apk"
+            type="SPLIT" />
+        <artifact
+            location="C:\Users\K\Documents\GitHub\AirQuality\app\build\intermediates\split-apk\debug\slices\slice_5.apk"
+            type="SPLIT" />
+        <artifact
+            location="C:\Users\K\Documents\GitHub\AirQuality\app\build\intermediates\split-apk\debug\slices\slice_6.apk"
+            type="SPLIT" />
+        <artifact
+            location="C:\Users\K\Documents\GitHub\AirQuality\app\build\intermediates\split-apk\debug\slices\slice_0.apk"
+            type="SPLIT" />
+        <artifact
+            location="C:\Users\K\Documents\GitHub\AirQuality\app\build\intermediates\split-apk\debug\slices\slice_1.apk"
+            type="SPLIT" />
+        <artifact
+            location="C:\Users\K\Documents\GitHub\AirQuality\app\build\intermediates\split-apk\debug\slices\slice_9.apk"
+            type="SPLIT" />
+        <artifact
+            location="C:\Users\K\Documents\GitHub\AirQuality\app\build\intermediates\split-apk\debug\slices\slice_8.apk"
+            type="SPLIT" />
+        <artifact
+            location="C:\Users\K\Documents\GitHub\AirQuality\app\build\intermediates\split-apk\debug\slices\slice_7.apk"
+            type="SPLIT" />
+        <artifact
+            location="C:\Users\K\Documents\GitHub\AirQuality\app\build\intermediates\instant-run-apk\debug\app-debug.apk"
+            type="SPLIT_MAIN" />
+    </build>
+    <build
+        build-mode="COLD"
+        ir-eligibility="METHOD_ADDED"
+        timestamp="1566421672449"
+        verifier="COLD_SWAP_REQUESTED" >
+        <artifact
+            location="C:\Users\K\Documents\GitHub\AirQuality\app\build\intermediates\split-apk\debug\dep\dependencies.apk"
+            type="SPLIT" />
+        <artifact
+            location="C:\Users\K\Documents\GitHub\AirQuality\app\build\intermediates\split-apk\debug\slices\slice_9.apk"
+            type="SPLIT" />
+        <artifact
+            location="C:\Users\K\Documents\GitHub\AirQuality\app\build\intermediates\instant-run-apk\debug\app-debug.apk"
+            type="SPLIT_MAIN" />
+    </build>
+    <build
+        build-mode="COLD"
+        ir-eligibility="R_CLASS_CHANGE"
+        timestamp="1566423487439"
+        verifier="COLD_SWAP_REQUESTED" >
+        <artifact
+            location="C:\Users\K\Documents\GitHub\AirQuality\app\build\intermediates\split-apk\debug\slices\slice_5.apk"
+            type="SPLIT" />
+        <artifact
+            location="C:\Users\K\Documents\GitHub\AirQuality\app\build\intermediates\split-apk\debug\slices\slice_4.apk"
+            type="SPLIT" />
+        <artifact
+            location="C:\Users\K\Documents\GitHub\AirQuality\app\build\intermediates\split-apk\debug\slices\slice_2.apk"
             type="SPLIT" />
         <artifact
             location="C:\Users\K\Documents\GitHub\AirQuality\app\build\intermediates\split-apk\debug\slices\slice_6.apk"
@@ -66,10 +110,29 @@
         <artifact
             location="C:\Users\K\Documents\GitHub\AirQuality\app\build\intermediates\split-apk\debug\slices\slice_0.apk"
             type="SPLIT" />
+        <artifact
+            location="C:\Users\K\Documents\GitHub\AirQuality\app\build\intermediates\split-apk\debug\slices\slice_3.apk"
+            type="SPLIT" />
+        <artifact
+            location="C:\Users\K\Documents\GitHub\AirQuality\app\build\intermediates\split-apk\debug\slices\slice_8.apk"
+            type="SPLIT" />
     </build>
     <build
         build-mode="COLD"
-        timestamp="1561862618245"
-        verifier="COLD_SWAP_REQUESTED" />
+        ir-eligibility="FIELD_TYPE_CHANGE"
+        timestamp="1566423591618"
+        verifier="COLD_SWAP_REQUESTED" >
+        <artifact
+            location="C:\Users\K\Documents\GitHub\AirQuality\app\build\intermediates\split-apk\debug\slices\slice_7.apk"
+            type="SPLIT" />
+    </build>
+    <build
+        build-mode="COLD"
+        timestamp="1566423665092"
+        verifier="COLD_SWAP_REQUESTED" >
+        <artifact
+            location="C:\Users\K\Documents\GitHub\AirQuality\app\build\intermediates\resources\instant-run\debug\resources-debug.apk"
+            type="SPLIT" />
+    </build>
 
 </instant-run>

@@ -16,6 +16,21 @@
     <string name="mapbox_token">pk.eyJ1Ijoia2V2aW5sIiwiYSI6ImNqbHF1Mjg0dDJrNWUzcHBhMTR2MnZzYm0ifQ.0SvrPQ1-FatZj34diqfN3Q</string>
     <string name="city_name">City</string>
     <string name="country_name">Country</string>
+    <string name="good_comment">Air quality is considered satisfactory, and air pollution poses little or no risk.</string>
+    <string name="moderate_comment">Air quality is acceptable; however, for some pollutants there may be a moderate" +
+                    " health concern for a very small number of people. For example, people who are unusually sensitive to ozone " +
+                    "may experience respiratory symptoms.</string>
+    <string name="sensitive_comment">Although general public is not likely to be affected at this AQI range, " +
+    "people with lung disease, older adults and children are at a greater risk from exposure to ozone, " +
+    "whereas persons with heart and lung disease, older adults and children are at greater risk from the " +
+    "presence of particles in the air.</string>
+    <string name="unhealthy_comment">Everyone may begin to experience some adverse health effects, and members of " +
+    "the sensitive groups may experience more serious effects.</string>
+    <string name="very_unhealthy_comment">This would trigger a health alert signifying that everyone may experience more serious health effects.</string>
+    <string name="hazardous_comment">This would trigger a health warnings of emergency conditions. " +
+                    "The entire population is more likely to be affected. Please visit the link below for assistance!</string>
+    <string name="error_comment">The air quality cannot be determined.</string>
+
 
     <string name="pref_aqiList_default_value">United States</string>
 
@@ -38,8 +53,8 @@
 
     <string name="pref_title_add_friends_to_messages">Add friends to messages</string>
     <string-array name="pref_example_list_titles">
-        <item>Always</item>
         <item>When possible</item>
+        <item>Always</item>
         <item>Never</item>
     </string-array>
     <string-array name="pref_example_list_values">

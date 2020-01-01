@@ -7,7 +7,7 @@
     tools:context=".CurrentAirQualityFragment"
     android:id="@+id/current_bg" >
 
-    <android.support.v4.widget.SwipeRefreshLayout
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/current_swipeRefresh"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -63,7 +63,7 @@
             android:layout_height="wrap_content" />
     </LinearLayout>
 
-</android.support.v4.widget.SwipeRefreshLayout>
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
     <ProgressBar
         android:id="@+id/current_progress_bar"

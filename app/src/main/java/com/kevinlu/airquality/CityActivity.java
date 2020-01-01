@@ -1,13 +1,11 @@
 package com.kevinlu.airquality;
 
-import android.content.Context;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
+import androidx.appcompat.widget.Toolbar;
 import android.text.Html;
 import android.text.method.LinkMovementMethod;
-import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -15,7 +13,6 @@ import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.kc.unsplash.Unsplash;
-import com.kc.unsplash.models.Download;
 import com.kc.unsplash.models.Photo;
 import com.kc.unsplash.models.SearchResults;
 import com.squareup.picasso.Picasso;
@@ -39,6 +36,9 @@ public class CityActivity extends AppCompatActivity {
     private TextView textViewAirQualityComment;
     private TextView textViewAirQualitySuggestion;
     private TextView textViewPhotoDetails;
+
+    private String unsplashCampaignURL = "?utm_source=AirQuality&utm_medium=referral&utm_campaign=api-credit";
+    private String unsplashUserURL = "https://unsplash.com/@";
 
     /**
      * Called when the activity is starting.
@@ -87,14 +87,14 @@ public class CityActivity extends AppCompatActivity {
         textViewPhotoDetails = findViewById(R.id.cityPhotoDetails);
 
         Toolbar toolbar = findViewById(R.id.cityToolbar);
+        assert getSupportActionBar() != null;
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
         toolbar.setTitle(cityName);
 
         textViewCoordinates.setText(coordinates);
         textViewTimestamp.setText(timestamp);
-        textViewAQIUS.setText("U.S. AQI: " + aqiUS);
+        textViewAQIUS.setText("U.S. AQI: ".concat(aqiUS));
         //textViewMainPollutantUS.setText("U.S. Main Pollutant: " + decodePollutant(mainPollutantUS));
         //BUG: AirVisual API no longer returns Main Pollutant data
         textViewMainPollutantUS.setText(" ");
@@ -110,27 +110,20 @@ public class CityActivity extends AppCompatActivity {
 
     private void setAirQualityComment(int aqius) {
         if (aqius >= 0 && aqius <= 50) {
-            textViewAirQualityComment.setText("Air quality is considered satisfactory, and air pollution poses little or no risk.");
+            textViewAirQualityComment.setText(R.string.good_comment);
         } else if (aqius >= 51 && aqius <= 100) {
-            textViewAirQualityComment.setText("Air quality is acceptable; however, for some pollutants there may be a moderate" +
-                    " health concern for a very small number of people. For example, people who are unusually sensitive to ozone " +
-                    "may experience respiratory symptoms.");
+            textViewAirQualityComment.setText(R.string.moderate_comment);
         } else if (aqius >= 101 && aqius <= 150) {
-            textViewAirQualityComment.setText("Although general public is not likely to be affected at this AQI range, " +
-                    "people with lung disease, older adults and children are at a greater risk from exposure to ozone, " +
-                    "whereas persons with heart and lung disease, older adults and children are at greater risk from the " +
-                    "presence of particles in the air.");
+            textViewAirQualityComment.setText(R.string.sensitive_comment);
         } else if (aqius >= 151 && aqius <= 200) {
-            textViewAirQualityComment.setText("Everyone may begin to experience some adverse health effects, and members of " +
-                    "the sensitive groups may experience more serious effects.");
+            textViewAirQualityComment.setText(R.string.unhealthy_comment);
         } else if (aqius >= 201 && aqius <= 300) {
-            textViewAirQualityComment.setText("This would trigger a health alert signifying that everyone may experience more serious health effects.");
+            textViewAirQualityComment.setText(R.string.very_unhealthy_comment);
         } else if (aqius >= 301) {
-            textViewAirQualityComment.setText("This would trigger a health warnings of emergency conditions. " +
-                    "The entire population is more likely to be affected. Please visit the link below for assistance!");
+            textViewAirQualityComment.setText(R.string.hazardous_comment);
             textViewAirQualitySuggestion.setVisibility(View.VISIBLE);
         } else {
-            textViewAirQualityComment.setText("The air quality cannot be determined.");
+            textViewAirQualityComment.setText(R.string.error_comment);
         }
     }
 
@@ -177,7 +170,7 @@ public class CityActivity extends AppCompatActivity {
      * @param imageView - the ImageView that should hold this image.
      */
     private void loadHeaderImageFromUnsplash(String cityName, String countryName, ImageView imageView) {
-        Unsplash unsplash = new Unsplash("2ef4adbbc6aa68fb62acbf7170933cbc25526420aa6da426c16cb0c08ce5cffd");
+        Unsplash unsplash = new Unsplash(getResources().getString(R.string.unsplash_client_id));
         unsplash.searchPhotos(cityName, new Unsplash.OnSearchCompleteListener() {
             @Override
             public void onComplete(SearchResults results) {
@@ -191,9 +184,9 @@ public class CityActivity extends AppCompatActivity {
                         public void onComplete(SearchResults results) {
                             List<Photo> countryPhotos = results.getResults();
                             int random = (int) (Math.random() * cityPhotos.size());
-                            String imageLink = countryPhotos.get(random).getUrls().getRegular() + "&utm_source=AirQuality&utm_medium=referral&utm_campaign=api-credit";
+                            String imageLink = countryPhotos.get(random).getUrls().getRegular() + unsplashCampaignURL;
                             String photographer = countryPhotos.get(random).getUser().getName();
-                            String photographerLink = "https://unsplash.com/@" + countryPhotos.get(random).getUser().getUsername() + "&utm_source=AirQuality&utm_medium=referral&utm_campaign=api-credit";
+                            String photographerLink = unsplashUserURL + countryPhotos.get(random).getUser().getUsername() + unsplashCampaignURL;
                             Log.d("LINK", photographerLink);
                             Log.d("LINK", imageLink);
                             Picasso.get().load(imageLink).fit().centerCrop().into(imageView);
@@ -208,9 +201,9 @@ public class CityActivity extends AppCompatActivity {
                     });
                 } else {
                     int random = (int) (Math.random() * cityPhotos.size());
-                    String imageLink = cityPhotos.get(random).getUrls().getRegular() + "&utm_source=AirQuality&utm_medium=referral&utm_campaign=api-credit";
+                    String imageLink = cityPhotos.get(random).getUrls().getRegular() + unsplashCampaignURL;
                     String photographer = cityPhotos.get(random).getUser().getName();
-                    String photographerLink = "https://unsplash.com/@" + cityPhotos.get(random).getUser().getUsername() + "&utm_source=AirQuality&utm_medium=referral&utm_campaign=api-credit";
+                    String photographerLink = unsplashUserURL + cityPhotos.get(random).getUser().getUsername() + unsplashCampaignURL;
                     Log.d("LINK", photographerLink);
                     Log.d("LINK", imageLink);
                     Picasso.get().load(imageLink).fit().centerCrop().into(imageView);
